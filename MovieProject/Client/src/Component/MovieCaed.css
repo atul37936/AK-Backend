@@ -1,0 +1,111 @@
+.movie-card {
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  border: 1px solid #e0e0e0;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  padding: 0;
+}
+
+.card-title {
+  color: #2196f3;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.movie-card:hover .card-title {
+  color: #1976d2;
+}
+
+.card-subtitle {
+  color: #757575;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card-text {
+  color: #424242;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.button-group {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.btn-delete,
+.btn-update {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-delete {
+  background-color: #ff5252;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #ff1744;
+  transform: scale(1.02);
+}
+
+.btn-update {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-update:hover {
+  background-color: #43a047;
+  transform: scale(1.02);
+}
+
+/* Optional: Add animation for content appearing */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.movie-card {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Optional: Add hover effect for text */
+.card-text.description {
+  transition: color 0.2s ease;
+}
+
+.movie-card:hover .card-text.description {
+  color: #1a1a1a;
+}
+
+/* Add focus states for accessibility */
+.btn-delete:focus,
+.btn-update:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
+}

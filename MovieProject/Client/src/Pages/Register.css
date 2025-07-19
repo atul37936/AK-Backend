@@ -1,0 +1,259 @@
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  padding: 20px;
+  perspective: 1000px;
+}
+
+.register-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2.5rem;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  transform-style: preserve-3d;
+  transform: rotateX(0deg);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  animation: cardFloat 0.8s ease-out;
+}
+
+.register-card:hover {
+  transform: rotateX(5deg) translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.card-header h2 {
+  color: #374151;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.header-line {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, #6366f1, #a855f7);
+  margin: 0 auto;
+  transition: width 0.4s ease;
+}
+
+.register-card:hover .header-line {
+  width: 120px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  position: relative;
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: transparent;
+  color: #1f2937;
+}
+
+.input-container label {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 0.5rem;
+  color: #6b7280;
+  background: white;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.input-container input:focus,
+.input-container input:not(:placeholder-shown) {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.input-container input:focus + label,
+.input-container input:not(:placeholder-shown) + label {
+  top: 0;
+  transform: translateY(-50%) scale(0.9);
+  color: #6366f1;
+}
+
+.form-line {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #6366f1, #a855f7);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.input-container input:focus ~ .form-line {
+  width: 100%;
+}
+
+.submit-button {
+  background: linear-gradient(45deg, #6366f1, #a855f7);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+}
+
+.submit-button:active {
+  transform: translateY(1px);
+}
+
+.button-text {
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.button-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.submit-button.loading {
+  pointer-events: none;
+}
+
+.submit-button.loading .button-loader {
+  opacity: 1;
+  visibility: visible;
+  animation: spin 1s linear infinite;
+}
+
+.submit-button.loading .button-text {
+  opacity: 0;
+}
+
+@keyframes cardFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) rotateX(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .register-card {
+    padding: 2rem;
+  }
+
+  .card-header h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Focus States for Accessibility */
+.input-container input:focus-visible {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+}
+
+.submit-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+}
+
+/* Error States */
+.input-container.error input {
+  border-color: #ef4444;
+}
+
+.input-container.error label {
+  color: #ef4444;
+}
+
+/* Success States */
+.input-container.success input {
+  border-color: #10b981;
+}
+
+.input-container.success label {
+  color: #10b981;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6366f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4f46e5;
+}
+
+/* Password Input Show/Hide Feature */
+.input-container input[type="password"] {
+  letter-spacing: 0.2em;
+}
