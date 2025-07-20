@@ -1,0 +1,160 @@
+:root {
+  --cbg-main: #21b6a8;
+  --cbg-accent: #81ecec;
+  --cbg-bg: #f7fafb;
+  --cbg-card-bg: #fff;
+  --cbg-title: #23262c;
+  --cbg-label: #293949;
+  --cbg-input: #f3f6fa;
+  --cbg-input-focus: #e3fcec;
+  --cbg-border: #d2dae1;
+  --cbg-btn: #21b6a8;
+  --cbg-btn-hover: #178575;
+  --cbg-danger: #ff6b81;
+  --transition: .28s cubic-bezier(.65,.14,.33,1.15);
+}
+
+/* Background (optional) */
+body {
+  background: var(--cbg-bg);
+}
+
+/* Card style */
+.card.shadow-sm.rounded-4 {
+  background: var(--cbg-card-bg) !important;
+  border-radius: 1.35rem !important;
+  box-shadow: 0 6px 40px rgba(33,182,168,0.13), 0 1px 12px rgba(55,95,122,0.04);
+  padding: 3rem 2.2rem 2rem 2.2rem !important;
+  max-width: 700px;
+  animation: fadeInCreateCard .65s cubic-bezier(.44,0,.44,1.04);
+  border: none !important;
+  transition: box-shadow .22s, transform .13s;
+}
+@keyframes fadeInCreateCard {
+  0% { opacity: 0; transform: translateY(50px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+.card.shadow-sm.rounded-4:hover {
+  box-shadow: 0 12px 80px rgba(33,182,168,0.19) !important;
+  transform: translateY(-3px) scale(1.012);
+}
+
+/* Title */
+h2.text-center {
+  color: var(--cbg-main);
+  font-weight: 900 !important;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.4rem !important;
+  transition: color var(--transition);
+}
+h2.text-center:hover {
+  color: var(--cbg-btn-hover);
+  text-shadow: 0 3px 20px #21b6a89c;
+}
+
+/* Labels */
+.form-label {
+  color: var(--cbg-label);
+  font-size: 1.07rem;
+  font-weight: 600;
+  letter-spacing: .013em;
+}
+
+/* Inputs & textarea */
+.form-control {
+  background: var(--cbg-input);
+  border-radius: 1.2em;
+  border: 1.5px solid var(--cbg-border);
+  padding: 0.83em 1.18em;
+  color: #393c3f;
+  font-size: 1.03rem;
+  box-shadow: none;
+  outline: none;
+  transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+}
+
+.form-control:focus {
+  border-color: var(--cbg-main);
+  background: var(--cbg-input-focus);
+  box-shadow: 0 2px 17px 0 rgba(33,182,168,0.11);
+}
+
+textarea.form-control {
+  min-height: 120px;
+  max-height: 260px;
+  resize: vertical;
+}
+
+/* "Tags" hint */
+.form-text {
+  color: var(--cbg-accent);
+  font-size: 0.98rem;
+  padding-left: 2px;
+}
+
+/* Button */
+.btn-primary {
+  border: 2px solid var(--cbg-btn);
+  background: #fff;
+  color: var(--cbg-btn);
+  font-weight: 700;
+  font-size: 1.08rem;
+  letter-spacing: .02em;
+  border-radius: 44px !important;
+  padding: .66em 2.2em;
+  box-shadow: 0 1px 11px rgba(33,182,168,0.08);
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: background var(--transition), color var(--transition), border var(--transition), box-shadow .14s, transform .12s;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 170%; height: 0;
+  background: linear-gradient(90deg, var(--cbg-btn-hover) 70%, var(--cbg-accent));
+  border-radius: 0 0 77% 77%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  transition: height .22s cubic-bezier(.22,.79,.31,1.09);
+}
+.btn-primary:hover::before,
+.btn-primary:focus::before {
+  height: 250%;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  color: #fff !important;
+  border-color: var(--cbg-btn-hover);
+  background: none;
+  box-shadow: 0 4px 17px rgba(33,182,168,0.09);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.btn-primary:active {
+  background: var(--cbg-btn-hover);
+  color: #fff !important;
+  border-color: var(--cbg-btn-hover);
+}
+
+/* Responsive tweaks */
+@media (max-width: 700px) {
+  .card.shadow-sm.rounded-4 { padding: 1.2rem !important; }
+  h2.text-center { font-size: 1.14rem; }
+}
+@media (max-width: 600px) {
+  .card.shadow-sm.rounded-4 { padding: .6rem !important; border-radius: .65em !important;}
+  h2.text-center { font-size: 1.07rem; }
+  .btn-primary { padding: .6em 1.15em; font-size: .97rem;}
+  .form-control { font-size: 0.98rem; }
+  .form-text { font-size: 0.9rem; }
+  .form-label { font-size: 0.95rem; }
+  .form-control:focus { box-shadow: none; }
+  .btn-primary::before { height: 200%; }
+  .btn-primary:hover::before,
+  .btn-primary:focus::before { height: 300%; }
+}
+
