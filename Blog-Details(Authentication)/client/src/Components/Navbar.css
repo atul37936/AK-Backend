@@ -1,0 +1,128 @@
+:root {
+  --brand-main: #21b6a8;
+  --nav-bg: #212529;
+  --nav-link: #fff;
+  --nav-hover: #21b6a8;
+  --nav-active: #1d7e72;
+  --transition: 0.3s cubic-bezier(.45,.03,.51,.95);
+}
+
+/* Navbar background and shadow */
+.custom-navbar {
+  background: var(--nav-bg);
+  transition: box-shadow var(--transition);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Brand highlight animation */
+.brand-highlight {
+  position: relative;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--brand-main) !important;
+  transition: color var(--transition), text-shadow var(--transition);
+}
+
+.brand-highlight:hover {
+  color: #fff !important;
+  text-shadow: 0 2px 12px rgba(33,182,168,0.25);
+  cursor: pointer;
+  animation: pulse 0.7s;
+}
+
+@keyframes pulse {
+  10% { transform: scale(1.07);}
+  20% { transform: scale(0.96);}
+  30% { transform: scale(1.02);}
+  40% { transform: scale(0.98);}
+  100% { transform: scale(1);}
+}
+
+/* NAV-LINK STYLE WITH UNDERLINE ANIMATION */
+.nav-link-style {
+  position: relative;
+  color: var(--nav-link) !important;
+  font-size: 1.08rem;
+  font-weight: 500;
+  letter-spacing: .3px;
+  transition: color var(--transition);
+  overflow: visible;
+}
+
+.nav-link-style::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 2px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand-main) 0%, #81ecec 100%);
+  border-radius: 3px;
+  opacity: 0;
+  width: 0;
+  transition: width 0.28s cubic-bezier(.4,0,.2,1), opacity 0.22s;
+  z-index: 1;
+}
+
+.nav-link-style:hover, .nav-link-style:focus {
+  color: var(--nav-hover) !important;
+  text-shadow: 0 2px 20px rgba(33,182,168,0.22);
+}
+.nav-link-style:hover::after,
+.nav-link-style:focus::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.nav-link-style.active {
+  color: var(--nav-active) !important;
+  font-weight: 700;
+}
+.nav-link-style.active::after {
+  width: 100%;
+  opacity: 1;
+}
+
+/* Gap between nav items (Bootstrap 5's gap-3 may not affect li directly) */
+.navbar-nav > .nav-item:not(:last-child) {
+  margin-right: 0.8rem;
+}
+
+/* Logout Button: Add nice transitions */
+.link-animated-btn {
+  border-radius: 50px;
+  font-weight: 600;
+  background: transparent;
+  color: #fff;
+  border: 2px solid var(--brand-main);
+  box-shadow: 0 1px 8px rgba(0,0,0,0.07);
+  padding: 6px 20px 6px 20px;
+  letter-spacing: .5px;
+  transition: 
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    transform 0.16s;
+}
+
+.link-animated-btn:hover,
+.link-animated-btn:focus {
+  background: var(--brand-main);
+  color: #fff !important;
+  border-color: #14a494;
+  box-shadow: 0 3px 18px rgba(33,182,168, 0.12);
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Responsive brand size */
+@media (max-width: 600px) {
+  .brand-highlight {
+    font-size: 1.2rem;
+  }
+}
+
+/* Responsive: Navbar padding improved on mobile */
+@media (max-width: 991px) {
+  .navbar .container {
+    padding: 0 8px;
+  }
+}

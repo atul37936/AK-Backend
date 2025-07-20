@@ -1,0 +1,160 @@
+:root {
+  --reg-main: #21b6a8;
+  --reg-accent: #81ecec;
+  --reg-bg: #f9fafb;
+  --reg-card-bg: #fff;
+  --reg-title: #23262c;
+  --reg-label: #283848;
+  --reg-input: #f3f6fa;
+  --reg-input-focus: #e3fcec;
+  --reg-btn: #21b6a8;
+  --reg-btn-hover: #178575;
+  --reg-danger: #ff6b81;
+  --reg-border: #e8ecee;
+  --reg-hint: #90b7b8;
+  --transition: .24s cubic-bezier(.63,.04,.3,1.02);
+}
+
+body {
+  background: var(--reg-bg);
+}
+
+/* Centered form container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 90vh;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* Card form styling */
+form {
+  background: var(--reg-card-bg);
+  border-radius: 1.45em;
+  box-shadow: 0 3px 40px rgba(33,182,168,0.09), 0 1px 7px rgba(33,55,82,0.04);
+  padding: 2.7em 2.2em 2em 2.2em;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 420px;
+  animation: reg-fadein .54s cubic-bezier(.44,0,.43,1);
+}
+
+@keyframes reg-fadein {
+  0% { opacity: 0; transform: translateY(40px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+
+/* Register Title */
+.container > h2 {
+  font-weight: 900;
+  color: var(--reg-main);
+  margin-bottom: 1.4em;
+  letter-spacing: .03em;
+  text-align: center;
+  transition: color var(--transition);
+}
+.container > h2:hover {
+  color: var(--reg-btn-hover);
+  text-shadow: 0 3px 18px rgba(33,182,168,0.12);
+}
+
+/* Inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  background: var(--reg-input);
+  border: 1.5px solid var(--reg-border);
+  border-radius: 1.16em;
+  padding: 0.85em 1.1em 0.85em 1.04em;
+  font-size: 1.03rem;
+  margin-bottom: 1.16em;
+  color: #293b3c;
+  outline: none;
+  transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+  font-family: inherit;
+  box-shadow: none;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: var(--reg-main);
+  background: var(--reg-input-focus);
+  box-shadow: 0 2px 14px rgba(33,182,168,0.11);
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+  color: var(--reg-hint);
+  font-size: 0.98rem;
+  opacity: .98;
+  transition: color var(--transition);
+}
+
+/* Register Button */
+button[type="submit"] {
+  border: 2px solid var(--reg-btn);
+  background: transparent;
+  font-weight: 700;
+  color: var(--reg-btn);
+  font-size: 1.09rem;
+  border-radius: 50px;
+  padding: 0.64em 0;
+  width: 100%;
+  margin-top: 0.4em;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 12px rgba(33,182,168,0.07);
+  letter-spacing: .03em;
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border var(--transition),
+    box-shadow var(--transition),
+    transform .13s;
+  z-index: 1;
+}
+button[type="submit"]::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 170%; height: 0;
+  background: linear-gradient(90deg, var(--reg-btn-hover) 65%, var(--reg-accent));
+  border-radius: 0 0 75% 75%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  transition: height .22s cubic-bezier(.23,.8,.32,1);
+}
+button[type="submit"]:hover::before,
+button[type="submit"]:focus::before {
+  height: 260%;
+}
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+  color: #fff !important;
+  border-color: var(--reg-btn-hover);
+  transform: translateY(-2px) scale(1.035);
+}
+
+button[type="submit"]:active {
+  background: var(--reg-btn-hover);
+  color: #fff !important;
+  border-color: var(--reg-btn-hover);
+}
+
+/* Responsive for mobile */
+@media (max-width: 480px) {
+  form {
+    padding: 2em 0.5em 1.5em 0.5em;
+    max-width: 98vw;
+  }
+  .container > h2 {
+    font-size: 1.13em;
+  }
+}

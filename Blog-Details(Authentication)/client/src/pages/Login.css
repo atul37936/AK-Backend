@@ -1,0 +1,167 @@
+:root {
+  --login-main: #21b6a8;
+  --login-accent: #81ecec;
+  --login-bg: #f9fafb;
+  --login-card-bg: #fff;
+  --login-title: #23262c;
+  --login-label: #283848;
+  --login-input: #f3f6fa;
+  --login-input-focus: #e3fcec;
+  --login-btn: #21b6a8;
+  --login-btn-hover: #178575;
+  --login-danger: #ff6b81;
+  --login-border: #e8ecee;
+  --login-hint: #90b7b8;
+  --transition: .24s cubic-bezier(.63,.04,.3,1.02);
+}
+
+body {
+  background: var(--login-bg);
+}
+
+/* Centered card wrapper */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 86vh;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* Card form box */
+form {
+  background: var(--login-card-bg);
+  border-radius: 1.45em;
+  box-shadow: 0 3px 40px rgba(33,182,168,0.09), 0 1px 7px rgba(33,55,82,0.04);
+  padding: 2.7em 2.2em 2em 2.2em;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  animation: login-fadein .54s cubic-bezier(.44,0,.43,1);
+}
+
+@keyframes login-fadein {
+  0% { opacity: 0; transform: translateY(40px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+
+/* Login Title */
+.container > h2 {
+  font-weight: 900;
+  color: var(--login-main);
+  margin-bottom: 1.4em;
+  letter-spacing: .03em;
+  text-align: center;
+  transition: color var(--transition);
+}
+.container > h2:hover {
+  color: var(--login-btn-hover);
+  text-shadow: 0 3px 18px rgba(33,182,168,0.12);
+}
+
+/* Inputs */
+input[type="email"],
+input[type="password"] {
+  background: var(--login-input);
+  border: 1.5px solid var(--login-border);
+  border-radius: 1.16em;
+  padding: 0.85em 1.1em 0.85em 1.04em;
+  font-size: 1.03rem;
+  margin-bottom: 1.25em;
+  color: #293b3c;
+  outline: none;
+  transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+  font-family: inherit;
+  box-shadow: none;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: var(--login-main);
+  background: var(--login-input-focus);
+  box-shadow: 0 2px 14px rgba(33,182,168,0.13);
+}
+
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+  color: var(--login-hint);
+  font-size: 0.98rem;
+  opacity: .98;
+  transition: color var(--transition);
+}
+
+/* Animated login button */
+button[type="submit"] {
+  border: 2px solid var(--login-btn);
+  background: transparent;
+  font-weight: 700;
+  color: var(--login-btn);
+  font-size: 1.09rem;
+  border-radius: 50px;
+  padding: 0.64em 0;
+  width: 100%;
+  margin-top: 0.4em;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 12px rgba(33,182,168,0.07);
+  letter-spacing: .03em;
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border var(--transition),
+    transform .13s;
+  z-index: 1;
+}
+button[type="submit"]::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 170%; height: 0;
+  background: linear-gradient(90deg, var(--login-btn-hover) 65%, var(--login-accent));
+  border-radius: 0 0 75% 75%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  transition: height .22s cubic-bezier(.23,.8,.32,1);
+}
+
+button[type="submit"]:hover::before,
+button[type="submit"]:focus::before {
+  height: 260%;
+}
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+  color: #fff !important;
+  border-color: var(--login-btn-hover);
+  transform: translateY(-2px) scale(1.035);
+}
+
+/* Register link and hint */
+a {
+  display: inline-block;
+  color: var(--login-btn);
+  margin-top: 1.2em;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: .01em;
+  transition: color var(--transition), text-shadow var(--transition);
+}
+a:hover, a:focus {
+  color: var(--login-btn-hover);
+  text-shadow: 0 2px 12px rgba(33,182,168,.15);
+  text-decoration: underline;
+}
+
+/* Subtle responsiveness */
+@media (max-width: 480px) {
+  form {
+    padding: 2em 0.5em 1.5em 0.5em;
+    max-width: 98vw;
+  }
+  .container > h2 {
+    font-size: 1.19em;
+  }
+}

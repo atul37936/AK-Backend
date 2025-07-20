@@ -1,0 +1,174 @@
+:root {
+  --details-brand: #21b6a8;
+  --details-bg: #ffffff;
+  --details-bg-secondary: #f6f8fa;
+  --details-title: #23262c;
+  --details-author: #636e72;
+  --details-date: #939ba2;
+  --details-tag-bg: #21b6a8;
+  --details-tag-text: #fff;
+  --details-tag-hover: #1d7e72;
+  --details-outline-btn: #222;
+  --details-outline-btn-bg: #f1f2f6;
+  --details-outline-btn-hover: #21b6a8;
+  --details-outline-btn-hover-text: #fff;
+  --details-danger: #ff4757;
+  --details-danger-hover: #f72c34;
+  --transition: .21s cubic-bezier(.54,.14,.44,.91);
+}
+
+/* Card itself - soft shadow, animated lift on hover */
+.card {
+  background: var(--details-bg);
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 24px rgba(33,182,168,0.06);
+  transition: box-shadow .34s cubic-bezier(.28,.32,.58,1), transform .22s cubic-bezier(.24,.95,.56,.93);
+  border: none;
+}
+
+.card:hover {
+  box-shadow: 0 8px 36px 0 rgba(33,182,168,.14);
+  transform: translateY(-3px) scale(1.01);
+}
+
+/* Card Image */
+.card-img-top, .card-img {
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  object-fit: cover;
+  filter: brightness(0.97);
+  transition: filter var(--transition), transform var(--transition);
+}
+
+.card-img-top:hover, .card-img:hover {
+  filter: brightness(1) saturate(1.08);
+  transform: scale(1.03);
+}
+
+/* Title & Meta Styling */
+.card-body h1 {
+  color: var(--details-title);
+  font-weight: 800;
+  font-size: 2.2rem;
+  letter-spacing: .02em;
+  margin-bottom: 0.6em;
+  transition: color var(--transition);
+}
+
+.card-body h1:hover {
+  color: var(--details-brand);
+}
+
+.card-body .text-muted {
+  color: var(--details-author) !important;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color var(--transition);
+}
+
+.card-body .text-muted span:last-child {
+  color: var(--details-date) !important;
+  font-size: 0.96rem;
+}
+
+.card-body hr {
+  border-color: #e3e6e8;
+}
+
+/* Content */
+.card-body p {
+  color: #3c3c3c;
+  font-size: 1.14rem;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  line-height: 1.85;
+  letter-spacing: .2px;
+}
+
+/* Tags - badge animated */
+.badge.bg-primary {
+  background: var(--details-tag-bg) linear-gradient(90deg, #21b6a8 70%, #81ecec 100%);
+  color: var(--details-tag-text);
+  font-size: 0.98rem;
+  padding: .54em 1em .54em .98em;
+  font-weight: 600;
+  border-radius: 40px;
+  margin-bottom: .2em;
+  letter-spacing: .03em;
+  box-shadow: 0 1px 6px rgba(33,182,168,0.08);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), box-shadow var(--transition), transform .17s;
+  border: none;
+}
+
+.badge.bg-primary:hover {
+  background: var(--details-tag-hover);
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(33,182,168,.11);
+  transform: scale(1.08) translateY(-2px);
+  filter: saturate(1.2);
+}
+
+.mt-5 > .btn, .mt-5 > .btn-outline-dark, .mt-5 > .btn-outline-danger, .mt-5 > .btn-danger {
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border var(--transition),
+    box-shadow var(--transition),
+    transform 0.16s cubic-bezier(.44,.14,.45,1.02);
+  font-weight: 600;
+  box-shadow: 0 1px 8px rgba(27,36,44,0.09);
+}
+
+/* Edit button custom */
+.btn-outline-dark.rounded-pill {
+  border: 2px solid var(--details-outline-btn);
+  color: var(--details-outline-btn);
+  background: var(--details-outline-btn-bg);
+  transition: background var(--transition), color var(--transition), border var(--transition), transform .16s;
+}
+
+.btn-outline-dark.rounded-pill:hover,
+.btn-outline-dark.rounded-pill:focus {
+  background: var(--details-outline-btn-hover);
+  border-color: var(--details-outline-btn-hover);
+  color: var(--details-outline-btn-hover-text) !important;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 18px rgba(33,182,168, .10);
+}
+
+/* Delete button custom */
+.btn-outline-danger.rounded-pill {
+  border: 2px solid var(--details-danger);
+  color: var(--details-danger);
+  background: #fff;
+}
+.btn-outline-danger.rounded-pill:hover,
+.btn-outline-danger.rounded-pill:focus {
+  background: var(--details-danger-hover);
+  color: #fff !important;
+  border-color: var(--details-danger-hover);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 18px rgba(255,71,87, .08);
+}
+
+/* Responsive tweaks */
+@media (max-width: 991px) {
+  .card {
+    border-radius: 1.1rem;
+  }
+  .card-img-top {
+    height: 210px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .card {
+    border-radius: .68rem;
+  }
+  .card-body h1 {
+    font-size: 1.3rem;
+  }
+  .card-img-top {
+    height: 128px !important;
+  }
+}

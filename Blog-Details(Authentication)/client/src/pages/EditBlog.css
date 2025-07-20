@@ -1,0 +1,177 @@
+:root {
+  --ebg-main: #21b6a8;
+  --ebg-accent: #81ecec;
+  --ebg-bg: #f8fafb;
+  --ebg-card-bg: #fff;
+  --ebg-title: #23262c;
+  --ebg-label: #283848;
+  --ebg-input: #f3f6fa;
+  --ebg-input-focus: #e3fcec;
+  --ebg-success: #32c671;
+  --ebg-success-hover: #219150;
+  --ebg-danger: #ff6b81;
+  --ebg-border: #d2dae1;
+  --ebg-text: #47525e;
+  --transition: 0.28s cubic-bezier(0.65, 0.04, 0.37, 1);
+}
+
+/* Card styles */
+.card {
+  background: var(--ebg-card-bg);
+  border-radius: 1.3rem;
+  box-shadow: 0 3px 32px rgba(33, 182, 168, 0.08),
+    0 1px 12px rgba(39, 55, 82, 0.04);
+  transition: box-shadow 0.23s, transform 0.19s;
+}
+.card:hover {
+  box-shadow: 0 7px 44px rgba(33, 182, 168, 0.13),
+    0 2px 16px rgba(39, 55, 82, 0.08);
+  transform: translateY(-2px) scale(1.013);
+}
+
+h2 {
+  font-weight: 900;
+  color: var(--ebg-main);
+  letter-spacing: 0.03em;
+  transition: color var(--transition);
+}
+
+h2:hover {
+  color: #134b48;
+  text-shadow: 0 3px 18px rgba(33, 182, 168, 0.085);
+}
+
+/* Labels */
+.form-label {
+  color: var(--ebg-label);
+  font-size: 1.09rem;
+  font-weight: 600;
+  margin-bottom: 0.25em;
+  letter-spacing: 0.02em;
+}
+
+/* Inputs & Textarea */
+.form-control {
+  background: var(--ebg-input);
+  border-radius: 1.2em;
+  border: 1.5px solid var(--ebg-border);
+  padding: 0.75em 1.1em;
+  font-size: 1.03rem;
+  color: var(--ebg-text);
+  box-shadow: none;
+  outline: none;
+  transition: border-color var(--transition), background var(--transition),
+    box-shadow var(--transition);
+}
+
+.form-control:focus {
+  border-color: var(--ebg-main);
+  background: var(--ebg-input-focus);
+  box-shadow: 0 1px 10px rgba(33, 182, 168, 0.08);
+}
+
+textarea.form-control {
+  min-height: 130px;
+  max-height: 300px;
+  resize: vertical;
+}
+
+/* Form info text */
+.form-text {
+  color: var(--ebg-accent);
+  font-size: 0.97rem;
+  padding-left: 3px;
+}
+
+/* Save Button styling */
+.btn-success {
+  border: 2px solid var(--ebg-success);
+  background: transparent;
+  color: var(--ebg-success);
+  font-size: 1.1rem;
+  border-radius: 50px;
+  font-weight: 700;
+  transition: background var(--transition), color var(--transition),
+    border var(--transition), box-shadow var(--transition),
+    transform 0.13s cubic-bezier(0.29, 0.9, 0.41, 1.22);
+  box-shadow: 0 1px 10px rgba(33, 182, 168, 0.08);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-success::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 170%;
+  height: 0;
+  background: linear-gradient(90deg, var(--ebg-success) 70%, #a8eec1 100%);
+  border-radius: 0 0 75% 75%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  transition: height 0.28s cubic-bezier(0.23, 0.8, 0.32, 1);
+}
+
+.btn-success:hover::before,
+.btn-success:focus::before {
+  height: 260%;
+}
+
+.btn-success:hover,
+.btn-success:focus {
+  color: #fff !important;
+  background: none;
+  border-color: var(--ebg-success);
+  box-shadow: 0 4px 22px rgba(50, 198, 113, 0.13);
+  transform: translateY(-2px) scale(1.045);
+}
+
+.btn-success:active {
+  background: var(--ebg-success-hover);
+  color: #fff !important;
+  border-color: var(--ebg-success-hover);
+}
+
+/* Validation feedback, if needed */
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+  border-color: var(--ebg-danger);
+}
+
+.was-validated .form-control:valid,
+.form-control.is-valid {
+  border-color: var(--ebg-success);
+}
+
+/* Responsive tweaks */
+@media (max-width: 700px) {
+  .card.p-4 {
+    padding: 2rem 0.8rem !important;
+  }
+  h2 {
+    font-size: 1.19rem;
+  }
+  .btn-success {
+    padding: 0.7em 1.5em !important;
+    font-size: 1rem;
+  }
+}
+
+/* Optional: Animate card entrance */
+@media (prefers-reduced-motion: no-preference) {
+  .card {
+    animation: card-fade-in 0.49s cubic-bezier(0.44, 0, 0.44, 1);
+  }
+  @keyframes card-fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
