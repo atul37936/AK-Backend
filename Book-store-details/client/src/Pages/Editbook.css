@@ -1,0 +1,142 @@
+:root {
+  --edit-main: #21b6a8;
+  --edit-accent: #81ecec;
+  --edit-bg: #f7fbfa;
+  --edit-card-bg: #fff;
+  --edit-title: #23262c;
+  --edit-label: #233749;
+  --edit-input-bg: #f3f6fa;
+  --edit-input-focus: #d2fbeb;
+  --edit-border: #d2dae1;
+  --edit-btn: #21b6a8;
+  --edit-btn-hover: #178575;
+  --edit-btn-grad: linear-gradient(90deg, #21b6a8 65%, #81ecec 100%);
+  --transition: .27s cubic-bezier(.48,.09,.26,1.02);
+}
+
+/* Card fade-in for main container */
+.container {
+  max-width: 700px;
+  margin: 50px auto 0 auto;
+  background: var(--edit-card-bg);
+  border-radius: 1.22em;
+  box-shadow: 0 6px 40px rgba(33,182,168,0.12), 0 1px 12px rgba(39,55,82,0.04);
+  padding: 3rem 2.2rem 2.2rem 2.2rem;
+  animation: edit-fade .66s cubic-bezier(.43,0,.44,1.04);
+}
+
+@keyframes edit-fade {
+  0% { opacity: 0; transform: translateY(48px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+
+/* Title */
+h2.mb-4 {
+  font-weight: 900;
+  color: var(--edit-main);
+  margin-bottom: 2.4rem !important;
+  text-align: center;
+  letter-spacing: .03em;
+  transition: color var(--transition);
+}
+h2.mb-4:hover {
+  color: var(--edit-btn-hover);
+  text-shadow: 0 3px 24px rgba(33,182,168,0.14);
+}
+
+/* Labels */
+.form-label {
+  color: var(--edit-label);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+
+/* Inputs */
+.form-control {
+  background: var(--edit-input-bg);
+  border-radius: 1em;
+  border: 1.5px solid var(--edit-border);
+  padding: 0.75em 1.08em;
+  color: #34393f;
+  font-size: 1.02rem;
+  box-shadow: none;
+  transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+}
+.form-control:focus {
+  border-color: var(--edit-main);
+  background: var(--edit-input-focus);
+  box-shadow: 0 2px 14px rgba(33,182,168,0.13);
+}
+
+@media (max-width: 700px) {
+  .container {
+    padding: 1.3rem .33rem 0.8rem .33rem;
+    border-radius: .7em;
+    margin-top: 22px;
+  }
+}
+
+/* Update Book Button styling */
+.btn-primary {
+  border: 2px solid var(--edit-btn);
+  background: #fff;
+  color: var(--edit-btn);
+  font-weight: 700;
+  border-radius: 50px;
+  font-size: 1.11rem;
+  padding: .69em 2.2em;
+  letter-spacing: .03em;
+  box-shadow: 0 1px 11px rgba(33,182,168,0.07);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border var(--transition),
+    box-shadow .17s,
+    transform .13s;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 170%; height: 0;
+  background: var(--edit-btn-grad);
+  border-radius: 0 0 72% 72%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  transition: height .22s cubic-bezier(.23,.8,.32,1);
+}
+.btn-primary:hover::before,
+.btn-primary:focus::before {
+  height: 260%;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  color: #fff !important;
+  background: none;
+  border-color: var(--edit-btn-hover);
+  box-shadow: 0 4px 20px rgba(33,182,168,0.13);
+  transform: translateY(-1.5px) scale(1.04);
+}
+
+/* Grid gap */
+.row.g-3 > .col-md-6 {
+  margin-bottom: 0.6em;
+}
+
+/* Fix label/sizing on mobile */
+@media (max-width: 720px) {
+  .col-md-6 { flex: 0 0 100%; max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  h2.mb-4 { font-size: 1.02rem; }
+}
+
+.book-card {
+    transition: all 0.3s ease;
+}

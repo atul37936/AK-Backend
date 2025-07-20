@@ -1,0 +1,162 @@
+:root {
+  --book-main: #21b6a8;
+  --book-accent: #81ecec;
+  --book-bg: #f7fbfa;
+  --book-card-bg: #fff;
+  --book-title: #23262c;
+  --book-label: #253749;
+  --book-input-bg: #f3f6fa;
+  --book-input-focus: #d2fbeb;
+  --book-border: #d2dae1;
+  --book-success: #32c671;
+  --book-success-hover: #219150;
+  --book-btn: #21b6a8;
+  --book-btn-hover: #178575;
+  --book-danger: #ff6b81;
+  --transition: 0.28s cubic-bezier(0.51, 0.06, 0.36, 0.97);
+}
+
+/* Body BG (optional, if page has light BG) */
+body {
+  background: var(--book-bg);
+}
+
+/* Main card holding the form */
+.mx-auto.p-4.shadow-sm {
+  background: var(--book-card-bg) !important;
+  border-radius: 1.25rem !important;
+  box-shadow: 0 6px 40px rgba(33, 182, 168, 0.13),
+    0 1px 12px rgba(55, 95, 122, 0.04);
+  transition: box-shadow 0.2s, transform 0.18s;
+  animation: fadeInBookCard 0.6s cubic-bezier(0.44, 0, 0.44, 1.04);
+}
+
+@keyframes fadeInBookCard {
+  0% {
+    opacity: 0;
+    transform: translateY(45px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Title */
+h2.text-center.fw-bold.mb-4 {
+  color: var(--book-main);
+  letter-spacing: 0.03em;
+  font-weight: 900 !important;
+  margin-bottom: 2rem !important;
+  transition: color var(--transition);
+}
+h2.text-center.fw-bold.mb-4:hover {
+  color: var(--book-btn-hover);
+  text-shadow: 0 3px 24px rgba(33, 182, 168, 0.13);
+}
+
+/* Form Label */
+.form-label {
+  color: var(--book-label);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Inputs & Textarea styling */
+.form-control.rounded-3 {
+  background: var(--book-input-bg);
+  border-radius: 1em !important;
+  border: 1.5px solid var(--book-border);
+  padding: 0.75em 1.05em;
+  color: #34393f;
+  font-size: 1.04rem;
+  box-shadow: none;
+  outline: none;
+  transition: border-color var(--transition), background var(--transition),
+    box-shadow var(--transition);
+}
+
+.form-control.rounded-3:focus {
+  border-color: var(--book-main);
+  background: var(--book-input-focus);
+  box-shadow: 0 2px 18px 0 rgba(33, 182, 168, 0.14);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 80px;
+  max-height: 220px;
+}
+
+/* Button */
+.btn-success.rounded-pill {
+  border: 2px solid var(--book-success);
+  background: transparent;
+  color: var(--book-success);
+  font-weight: 700;
+  font-size: 1.07rem;
+  letter-spacing: 0.03em;
+  border-radius: 50px;
+  box-shadow: 0 1px 14px rgba(33, 182, 168, 0.11);
+  padding: 0.68em 1.8em;
+  position: relative;
+  overflow: hidden;
+  transition: background var(--transition), color var(--transition),
+    border var(--transition), box-shadow var(--transition), transform 0.11s;
+  z-index: 1;
+}
+
+.btn-success.rounded-pill::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 170%;
+  height: 0;
+  background: linear-gradient(
+    90deg,
+    var(--book-success-hover) 70%,
+    var(--book-accent)
+  );
+  border-radius: 0 0 75% 75%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  transition: height 0.23s cubic-bezier(0.23, 0.8, 0.32, 1);
+}
+
+.btn-success.rounded-pill:hover::before,
+.btn-success.rounded-pill:focus::before {
+  height: 260%;
+}
+
+.btn-success.rounded-pill:hover,
+.btn-success.rounded-pill:focus {
+  color: #fff !important;
+  background: none;
+  border-color: var(--book-success-hover);
+  box-shadow: 0 4px 22px rgba(50, 198, 113, 0.15);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.btn-success.rounded-pill:active {
+  background: var(--book-success-hover);
+  color: #fff !important;
+  border-color: var(--book-success-hover);
+}
+
+/* Responsive adjustments */
+@media (max-width: 650px) {
+  .mx-auto.p-4.shadow-sm {
+    padding: 1.5rem 0.3rem !important;
+    border-radius: 0.6rem !important;
+  }
+  h2.text-center.fw-bold.mb-4 {
+    font-size: 1.19rem;
+  }
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

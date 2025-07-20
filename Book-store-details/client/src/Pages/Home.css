@@ -1,0 +1,195 @@
+:root {
+  --book-home-main: #21b6a8;
+  --book-home-accent: #81ecec;
+  --book-home-card-bg: #fff;
+  --book-home-title: #23262c;
+  --book-home-muted: #708290;
+  --book-home-price: #2fb890;
+  --book-home-border: #eaf6f6;
+  --book-home-btn: #21b6a8;
+  --book-home-btn-hover: #178575;
+  --book-home-shadow: 0 8px 40px rgba(33, 182, 168, 0.14);
+  --transition: 0.26s cubic-bezier(0.51, 0.06, 0.36, 0.97);
+}
+
+/* Book card */
+.book-card {
+  background: var(--book-home-card-bg);
+  border-radius: 1.25rem;
+  box-shadow: var(--book-home-shadow);
+  transition: box-shadow 0.29s cubic-bezier(0.28, 0.32, 0.58, 1),
+    transform 0.15s cubic-bezier(0.33, 0.12, 0.49, 1);
+  border: 1.5px solid var(--book-home-border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.book-card:hover {
+  box-shadow: 0 12px 44px rgba(33, 182, 168, 0.19);
+  transform: translateY(-5px) scale(1.014);
+}
+
+/* Card image and favorite btn */
+.card-img-top {
+  border-top-left-radius: 1.25rem;
+  border-top-right-radius: 1.25rem;
+  object-fit: cover;
+  filter: brightness(0.97);
+  transition: filter var(--transition), transform var(--transition);
+}
+.book-card:hover .card-img-top {
+  filter: brightness(1.12) saturate(1.08);
+  transform: scale(1.03);
+}
+
+.btn-light.position-absolute {
+  background: #fff;
+  border: 1.5px solid #f8dbdb;
+  transition: box-shadow var(--transition), transform 0.12s;
+  z-index: 2;
+}
+.btn-light.position-absolute:hover {
+  box-shadow: 0 2px 14px rgba(231, 76, 60, 0.08);
+  transform: scale(1.15);
+}
+
+/* Book title and meta */
+.fw-bold.text-dark {
+  color: var(--book-home-title) !important;
+  font-size: 1.08rem;
+  margin-top: 0.15em;
+  margin-bottom: 0.25em;
+  transition: color var(--transition);
+}
+.fw-bold.text-dark:hover {
+  color: var(--book-home-btn);
+}
+
+.text-muted,
+.text-secondary {
+  color: var(--book-home-muted) !important;
+  font-size: 0.93em;
+}
+
+/* Card content shrink truncate/more */
+.card-body p {
+  margin-bottom: 0.45em;
+}
+
+.badge.bg-warning {
+  font-weight: 700;
+  font-size: 0.91em;
+  background: linear-gradient(90deg, #ffd600 75%, #fffde4 100%);
+  border-radius: 50em;
+  letter-spacing: 0.01em;
+}
+
+/* Price */
+.text-success.fw-semibold {
+  color: var(--book-home-price) !important;
+  font-weight: 700 !important;
+  font-size: 1.03em;
+  letter-spacing: 0.01em;
+}
+
+/* Animated "View Details" button */
+.btn-outline-primary.btn-sm {
+  border: 2px solid var(--book-home-btn);
+  background: #fff;
+  color: var(--book-home-btn);
+  font-weight: 700;
+  font-size: 0.98em;
+  border-radius: 50px;
+  transition: background var(--transition), color var(--transition),
+    border var(--transition), box-shadow 0.18s cubic-bezier(0.23, 0.8, 0.32, 1),
+    transform 0.13s;
+  box-shadow: 0 0.5px 4px rgba(33, 182, 168, 0.1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Gradient slide button effect */
+.btn-outline-primary.btn-sm::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 160%;
+  height: 0;
+  background: linear-gradient(
+    90deg,
+    var(--book-home-btn-hover) 70%,
+    var(--book-home-accent)
+  );
+  border-radius: 0 0 70% 70%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  transition: height 0.22s cubic-bezier(0.23, 0.8, 0.32, 1);
+}
+
+.btn-outline-primary.btn-sm:hover::before,
+.btn-outline-primary.btn-sm:focus::before {
+  height: 230%;
+}
+
+.btn-outline-primary.btn-sm:hover,
+.btn-outline-primary.btn-sm:focus {
+  color: #fff !important;
+  border-color: var(--book-home-btn-hover);
+  background: none;
+  box-shadow: 0 4px 22px rgba(33, 182, 168, 0.09);
+  transform: translateY(-2px) scale(1.045);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .col-lg-3 {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+}
+@media (max-width: 767px) {
+  .col-md-4 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .card-img-top {
+    height: 180px !important;
+  }
+}
+@media (max-width: 600px) {
+  .col-sm-6,
+  .col-md-4,
+  .col-lg-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .card-img-top {
+    height: 110px !important;
+  }
+  .book-card {
+    border-radius: 0.7em;
+  }
+}
+.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+.book-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.btn-light.position-absolute {
+  top: 10px;
+  right: 10px;
+}
+.book-card {
+  transition: all 0.3s ease;
+}
+.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
