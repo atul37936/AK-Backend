@@ -1,0 +1,99 @@
+.about-container {
+  max-width: 540px;
+  margin: 2rem auto;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(135deg, #1b2735 0%, #485563 100%);
+  color: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  transition: box-shadow 0.3s;
+}
+.about-container:hover {
+  box-shadow: 0 12px 42px 0 rgba(31, 38, 135, 0.5);
+}
+
+.about-container h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+
+.about-container h2::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, #3b82f6, #06d6a0);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px;
+  margin-top: 6px;
+}
+
+.about-container h2:hover::after {
+  width: 75%;
+}
+
+.about-container ul {
+  margin: 1.2rem 0 1rem 1.2rem;
+  padding: 0;
+  list-style: none;
+}
+.about-container ul li {
+  margin: 0.7rem 0;
+  padding: 0.55rem 1.2rem;
+  background: rgba(59, 130, 246, 0.08);
+  border-radius: 10px;
+  color: #d1d5db;
+  position: relative;
+  transition: 
+    background 0.32s cubic-bezier(.25,.8,.25,1),
+    color 0.26s cubic-bezier(.4,0,.2,1),
+    transform 0.28s cubic-bezier(.45,0,.55,1);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.about-container ul li::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 0;
+  transform: translateY(-50%);
+  height: 90%;
+  width: 4px;
+  background: linear-gradient(180deg, #3b82f6, #06d6a0);
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.4s, left 0.4s;
+}
+
+.about-container ul li:hover {
+  background: linear-gradient(90deg, #3b82f619, #06d6a01a);
+  color: #fff;
+  transform: translateX(7px) scale(1.03);
+}
+
+.about-container ul li:hover::before {
+  opacity: 1;
+  left: -8px;
+}
+
+.about-container p {
+  font-size: 1.08rem;
+  color: #e5e7eb;
+  margin-top: 1.2rem;
+  transition: color 0.3s;
+}
+.about-container p:last-child {
+  color: #06d6a0;
+  font-weight: 600;
+  letter-spacing: .8px;
+  font-size: 1.09rem;
+  margin-top: 1.9rem;
+  transition: color 0.3s;
+}
+
+.about-container p:last-child:hover {
+  color: #3b82f6;
+}

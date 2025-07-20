@@ -1,0 +1,131 @@
+/* Container Animation */
+.login-form {
+  max-width: 360px;
+  margin: 52px auto;
+  padding: 2.3rem 2rem 1.5rem 2rem;
+  background: linear-gradient(135deg, #21243d 60%, #283e51 100%);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(44, 62, 80, 0.29);
+  display: flex;
+  flex-direction: column;
+  animation: popIn 0.9s cubic-bezier(0.39, 0.575, 0.565, 1.000);
+  opacity: 0.99;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Heading */
+.login-form h2 {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: 0.8px;
+  position: relative;
+}
+
+.login-form h2::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, #3b82f6, #06d6a0);
+  border-radius: 2px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0 auto;
+  margin-top: 0.4rem;
+}
+.login-form h2:hover::after {
+  width: 76%;
+}
+
+
+/* Inputs */
+.login-form input {
+  margin-bottom: 1.2rem;
+  padding: 0.87rem 1.2rem;
+  border: 2px solid #3b82f68a;
+  border-radius: 9px;
+  background: #222a36;
+  color: #eee;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: 
+    border-color 0.24s,
+    box-shadow 0.25s,
+    background 0.22s;
+  outline: none;
+  box-shadow: 0 2px 16px 0 rgba(59,130,246,0.05);
+}
+
+.login-form input:focus {
+  border-color: #06d6a0;
+  background: #293750;
+  box-shadow: 0 0 14px 0 #06d6a067;
+}
+.login-form input:hover {
+  border-color: #3b82f6;
+  background: #223050;
+}
+
+/* Button */
+.login-form button[type="submit"] {
+  padding: 0.85rem 0;
+  background: linear-gradient(90deg, #3b82f6, #06d6a0 80%);
+  color: #fff;
+  font-size: 1.10rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: 
+    background 0.35s cubic-bezier(.44,0,.4,1),
+    transform 0.28s cubic-bezier(.5,0,.04,1.06),
+    box-shadow 0.37s ease;
+  box-shadow: 0 4px 24px 0 rgba(59,130,246, 0.13);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow, lift, and ripple on hover/click */
+.login-form button[type="submit"]:hover {
+  background: linear-gradient(90deg, #06d6a0 10%, #3b82f6 100%);
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 32px 0 rgba(59, 130, 246, 0.23), 
+              0 1px 12px 0 #06d6a0aa;
+}
+
+.login-form button[type="submit"]:active {
+  transform: scale(0.98);
+  box-shadow: 0 3px 10px #06d6a088;
+}
+
+/* Bonus: Focus ring */
+.login-form button[type="submit"]:focus {
+  outline: 2.5px solid #06d6a0;
+  outline-offset: 2px;
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .login-form {
+    padding: 1.5rem 0.6rem;
+    border-radius: 10px;
+  }
+  .login-form h2 {
+    font-size: 1.25rem;
+  }
+}
